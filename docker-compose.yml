@@ -1,0 +1,5 @@
+services:
+  app:
+    image: my_python_app
+    ports:
+      - "80:5000"

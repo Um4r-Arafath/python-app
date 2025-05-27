@@ -1,0 +1,21 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  BuildAndDeploy:
+    runs-on: [self-hosted, python-app]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t my_python_app .
+
+      - name: Run Docker container
+        run: docker compose up -d
